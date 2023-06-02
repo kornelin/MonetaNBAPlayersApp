@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -24,60 +25,74 @@ import androidx.compose.ui.Alignment
 
 @Composable
 fun PlayerDetailScreen(player: Player?, navController: NavController) {
-    Column(
+    LazyColumn(
         modifier = Modifier
             .padding(16.dp)
             .fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Box(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            IconButton(
-                onClick = { navController.navigateUp() },
-                modifier = Modifier.align(Alignment.CenterStart)
+        item {
+            Box(
+                modifier = Modifier.fillMaxWidth()
             ) {
-                Icon(
-                    imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = "Back Button"
+                IconButton(
+                    onClick = { navController.navigateUp() },
+                    modifier = Modifier.align(Alignment.CenterStart)
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = "Back Button"
+                    )
+                }
+                Text(
+                    text = "Player Details",
+                    modifier = Modifier.align(Alignment.Center),
+                    style = MaterialTheme.typography.h4
                 )
             }
+        }
+        item {
             Text(
-                text = "Player Details",
-                modifier = Modifier.align(Alignment.Center),
-                style = MaterialTheme.typography.h4
+                text = "Name: ${player?.first_name ?: "N/A"} ${player?.last_name ?: "N/A"}",
+                style = MaterialTheme.typography.h6
             )
         }
-        Text(
-            text = "Name: ${player?.first_name ?: "N/A"} ${player?.last_name ?: "N/A"}",
-            style = MaterialTheme.typography.h6
-        )
-        Text(
-            text = "Position: ${if (player!!.position.isNullOrEmpty()) "N/A" else player!!.position}",
-            style = MaterialTheme.typography.h6
-        )
-        Text(
-            text = "Height: ${player?.height_feet?.toString() ?: "N/A"} feet ${player?.height_inches?.toString() ?: "N/A"} inches",
-            style = MaterialTheme.typography.h6
-        )
-        Text(
-            text = "Weight: ${player?.weight_pounds?.toString() ?: "N/A"} pounds",
-            style = MaterialTheme.typography.h6
-        )
-        Text(
-            text = "Team: ${player?.team?.name ?: "N/A"}",
-            style = MaterialTheme.typography.h6
-        )
-        Text(
-            text = "Click here for team details",
-            modifier = Modifier.clickable {
-                player?.let {
-                    navController.navigate(Screen.TeamDetail.route + "/${it.team.id}")
-                }
-            },
-            color = MaterialTheme.colors.primary,
-            textDecoration = TextDecoration.Underline
-        )
+        item {
+            Text(
+                text = "Position: ${if (player!!.position.isNullOrEmpty()) "N/A" else player!!.position}",
+                style = MaterialTheme.typography.h6
+            )
+        }
+        item {
+            Text(
+                text = "Height: ${player?.height_feet?.toString() ?: "N/A"} feet ${player?.height_inches?.toString() ?: "N/A"} inches",
+                style = MaterialTheme.typography.h6
+            )
+        }
+        item {
+            Text(
+                text = "Weight: ${player?.weight_pounds?.toString() ?: "N/A"} pounds",
+                style = MaterialTheme.typography.h6
+            )
+        }
+        item {
+            Text(
+                text = "Team: ${player?.team?.name ?: "N/A"}",
+                style = MaterialTheme.typography.h6
+            )
+        }
+        item {
+            Text(
+                text = "Click here for team details",
+                modifier = Modifier.clickable {
+                    player?.let {
+                        navController.navigate(Screen.TeamDetail.route + "/${it.team.id}")
+                    }
+                },
+                color = MaterialTheme.colors.primary,
+                textDecoration = TextDecoration.Underline
+            )
+        }
     }
 }
 
