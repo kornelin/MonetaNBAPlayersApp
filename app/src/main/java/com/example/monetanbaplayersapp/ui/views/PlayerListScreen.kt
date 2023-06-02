@@ -2,12 +2,14 @@ package com.example.monetanbaplayersapp.ui.views
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Card
@@ -33,30 +35,39 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
                 text = "No.",
                 style = MaterialTheme.typography.body2,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
+                    .wrapContentWidth(Alignment.CenterHorizontally)
             )
             Text(
                 text = "Name & Surname",
                 style = MaterialTheme.typography.body2,
-                modifier = Modifier.weight(3f)
+                modifier = Modifier
+                    .weight(3f)
+                    .wrapContentWidth(Alignment.CenterHorizontally)
             )
             Text(
                 text = "Position",
                 style = MaterialTheme.typography.body2,
-                modifier = Modifier.weight(2f)
+                modifier = Modifier
+                    .weight(2f)
+                    .wrapContentWidth(Alignment.CenterHorizontally)
             )
             Text(
                 text = "Team",
                 style = MaterialTheme.typography.body2,
-                modifier = Modifier.weight(2f)
+                modifier = Modifier
+                    .weight(2f)
+                    .wrapContentWidth(Alignment.CenterHorizontally)
             )
         }
-        // List of players
+
         LazyColumn(
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
@@ -73,33 +84,42 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
                 ) {
                     Row(
                         modifier = Modifier.padding(16.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         Text(
                             text = "${index + 1}.",
                             style = MaterialTheme.typography.body1,
-                            modifier = Modifier.weight(1f),
+                            modifier = Modifier
+                                .weight(1f)
+                                .wrapContentWidth(Alignment.CenterHorizontally),
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
                         Text(
                             text = "${player.first_name} ${player.last_name}",
                             style = MaterialTheme.typography.body1,
-                            modifier = Modifier.weight(3f),
+                            modifier = Modifier
+                                .weight(3f)
+                                .wrapContentWidth(Alignment.CenterHorizontally),
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
                         Text(
                             text = if (player.position.isNullOrEmpty()) "N/A" else player.position,
                             style = MaterialTheme.typography.body1,
-                            modifier = Modifier.weight(2f),
+                            modifier = Modifier
+                                .weight(2f)
+                                .wrapContentWidth(Alignment.CenterHorizontally),
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
                         Text(
                             text = player.team?.name ?: "N/A",
                             style = MaterialTheme.typography.body1,
-                            modifier = Modifier.weight(2f),
+                            modifier = Modifier
+                                .weight(2f)
+                                .wrapContentWidth(Alignment.CenterHorizontally),
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -110,3 +130,5 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
         }
     }
 }
+
+
