@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -42,9 +43,12 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    text = "No.",
+                    text = "№",
                     style = MaterialTheme.typography.body2,
-                    modifier = Modifier.align(Alignment.Center)
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 25.dp)
                 )
             }
             Box(
@@ -53,7 +57,8 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
                 Text(
                     text = "Name",
                     style = MaterialTheme.typography.body2,
-                    modifier = Modifier.align(Alignment.Center)
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
             Box(
@@ -62,7 +67,8 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
                 Text(
                     text = "Position",
                     style = MaterialTheme.typography.body2,
-                    modifier = Modifier.align(Alignment.Center)
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
             Box(
@@ -71,13 +77,16 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
                 Text(
                     text = "Team",
                     style = MaterialTheme.typography.body2,
-                    modifier = Modifier.align(Alignment.Center)
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 20.dp)
                 )
             }
         }
 
         LazyColumn(
-            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             itemsIndexed(players.value) { index, player ->
@@ -87,7 +96,7 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
                         .clickable {
                             navController.navigate(Screen.PlayerDetail.route + "/${player.id}")
                         }
-                        .padding(vertical = 8.dp),
+                        .padding(vertical = 3.dp),
                     elevation = 4.dp
                 ) {
                     Row(
@@ -100,7 +109,8 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
                                 .weight(1f)
-                                .wrapContentWidth(Alignment.CenterHorizontally),
+                                .fillMaxWidth(),
+                            textAlign = TextAlign.Center,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -109,7 +119,8 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
                                 .weight(3f)
-                                .wrapContentWidth(Alignment.CenterHorizontally),
+                                .fillMaxWidth(),
+                            textAlign = TextAlign.Center,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -118,7 +129,8 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
                                 .weight(2f)
-                                .wrapContentWidth(Alignment.CenterHorizontally),
+                                .fillMaxWidth(),
+                            textAlign = TextAlign.Center,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -127,7 +139,8 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
                                 .weight(2f)
-                                .wrapContentWidth(Alignment.CenterHorizontally),
+                                .fillMaxWidth(),
+                            textAlign = TextAlign.Center,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -138,5 +151,6 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
         }
     }
 }
+
 
 
