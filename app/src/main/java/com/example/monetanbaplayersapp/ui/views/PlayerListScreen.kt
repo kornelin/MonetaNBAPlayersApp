@@ -38,34 +38,42 @@ fun PlayerListScreen(viewModel: PlayerViewModel, navController: NavController) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            Text(
-                text = "No.",
-                style = MaterialTheme.typography.body2,
-                modifier = Modifier
-                    .weight(1f)
-                    .wrapContentWidth(Alignment.CenterHorizontally)
-            )
-            Text(
-                text = "Name & Surname",
-                style = MaterialTheme.typography.body2,
-                modifier = Modifier
-                    .weight(3f)
-                    .wrapContentWidth(Alignment.CenterHorizontally)
-            )
-            Text(
-                text = "Position",
-                style = MaterialTheme.typography.body2,
-                modifier = Modifier
-                    .weight(2f)
-                    .wrapContentWidth(Alignment.CenterHorizontally)
-            )
-            Text(
-                text = "Team",
-                style = MaterialTheme.typography.body2,
-                modifier = Modifier
-                    .weight(2f)
-                    .wrapContentWidth(Alignment.CenterHorizontally)
-            )
+            Box(
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(
+                    text = "No.",
+                    style = MaterialTheme.typography.body2,
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
+            Box(
+                modifier = Modifier.weight(3f)
+            ) {
+                Text(
+                    text = "Name",
+                    style = MaterialTheme.typography.body2,
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
+            Box(
+                modifier = Modifier.weight(2f)
+            ) {
+                Text(
+                    text = "Position",
+                    style = MaterialTheme.typography.body2,
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
+            Box(
+                modifier = Modifier.weight(2f)
+            ) {
+                Text(
+                    text = "Team",
+                    style = MaterialTheme.typography.body2,
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
         }
 
         LazyColumn(
